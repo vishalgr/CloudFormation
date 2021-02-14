@@ -1,0 +1,22 @@
+---
+  AWSTemplateFormatVersion: "2010-09-09"
+  Description: "Creates an ec-2 instance"
+
+  Parameters:
+      S3BucketName:
+          Description: "Enter S3 Bucket Name"
+          Type: String
+          MinLength: 3
+          MaxLenght: 10
+          AllowedPattern: "[A-Za-z]+"
+
+  Resources:
+      S3Bucket:
+        Type: AWS::S3::Bucket
+        Properties:
+          BucketName: !ref 'S3BucketName'
+
+  Outputs:
+      BucketName: 
+          Value: !ref 'S3Bucket' #to get physical ID of any resource use !ref
+      
